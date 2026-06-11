@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: pastelaria
+    env: php
+    region: oregon  # o frankfort, singapore, etc.
+    buildCommand: |
+      # Instalar dependencias de Composer
+      composer install --no-dev --optimize-autoloader
+      
+      # Generar caches
+      php artisan config:cache
+      php artisan route:cache
+      php artisan view:cache
+      
+      # Crear symlink para storage
+      php artisan storage:link
+    startCommand: |
+      # Iniciar servidor PHP integrado en el puerto que Render asigne
+      php artisan serve --host=0.0.0.0 --port=$PORT
+    envVars:
+      - key: APP_NAME
+        value: Pastelaria
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: DB_CONNECTION
+        value: mongodb
+      - key: DB_PORT
+        value: 27017
+      - key: DB_AUTHENTICATION_DATABASE
+        value: admin
+      # Las siguientes las configurarás manualmente en el dashboard de Render

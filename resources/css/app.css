@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animaciones personalizadas para food e-commerce */
+@layer components {
+    .product-hover {
+        @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+    }
+    
+    .btn-primary-food {
+        @apply px-6 py-3 bg-gradient-to-r from-rose-500 to-pink-500 text-white font-medium rounded-full 
+               hover:from-rose-600 hover:to-pink-600 transition-all shadow-md hover:shadow-lg active:scale-95;
+    }
+    
+    .card-food {
+        @apply bg-white rounded-2xl shadow-md border border-rose-100 overflow-hidden;
+    }
+}
+
+/* Efecto de "huevo" para imágenes */
+.img-egg {
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    transition: border-radius 0.3s ease;
+}
+.img-egg:hover {
+    border-radius: 50%;
+}
+
+/* Animación suave para badges */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
