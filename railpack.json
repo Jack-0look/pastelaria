@@ -1,0 +1,19 @@
+{
+  "$schema": "https://railway.app/railpack.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "nixpacksPlan": {
+      "phases": {
+        "install": {
+          "cmds": [
+            "docker-php-ext-install mongodb",
+            "composer install --no-dev --optimize-autoloader"
+          ]
+        }
+      }
+    }
+  },
+  "start": {
+    "cmd": "php artisan serve --host=0.0.0.0 --port=$PORT"
+  }
+}
