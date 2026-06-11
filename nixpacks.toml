@@ -1,0 +1,2 @@
+[phases.install]
+cmds = ["docker-php-ext-install mongodb", "composer install --no-dev --optimize-autoloader"]
